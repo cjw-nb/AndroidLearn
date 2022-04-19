@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,10 +22,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Button button1 = (Button) findViewById(R.id.button1);
         Button button2 = (Button) findViewById(R.id.button2);
+        Button button3 = (Button) findViewById(R.id.button3);
         editText = (EditText) findViewById(R.id.edit_text);
         progressBar = (ProgressBar)findViewById(R.id.progress_bar);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(progressBar.getVisibility() ==View.GONE )
                     progressBar.setVisibility(View.VISIBLE);
                 else progressBar.setVisibility(View.GONE);
+                break;
+            case R.id.button3:
+                Intent intent = new Intent(this, ThirdActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
