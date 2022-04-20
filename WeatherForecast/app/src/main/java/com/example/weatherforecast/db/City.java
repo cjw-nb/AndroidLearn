@@ -1,12 +1,14 @@
 package com.example.weatherforecast.db;
 
+import org.litepal.crud.LitePalSupport;
+
 /**
  * @program: City
  * @description 市
  * @author: Cao Jingwei
  * @create: 2022-04-19 19:44
  **/
-public class City {
+public class City extends LitePalSupport {
     private int id;
     private int provinceId;
     private String cityName;

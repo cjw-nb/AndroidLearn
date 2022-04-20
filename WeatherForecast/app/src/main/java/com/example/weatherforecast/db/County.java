@@ -1,17 +1,19 @@
 package com.example.weatherforecast.db;
 
+import org.litepal.crud.LitePalSupport;
+
 /**
  * @program: County
  * @description 县
  * @author: Cao Jingwei
  * @create: 2022-04-19 19:46
  **/
-public class County {
+public class County extends LitePalSupport{
     private int id;
     private int cityId;
     private String countyName;
     private int countyCode;
-    private int weatherId;
+    private String weatherId;
 
     public int getId() {
         return id;
@@ -45,11 +47,11 @@ public class County {
         this.countyCode = countyCode;
     }
 
-    public int getWeatherId() {
+    public String geWeatherId() {
         return weatherId;
     }
 
-    public void setWeatherId(int weatherId) {
+    public void setWeatherId(String weatherId) {
         this.weatherId = weatherId;
     }
 }
