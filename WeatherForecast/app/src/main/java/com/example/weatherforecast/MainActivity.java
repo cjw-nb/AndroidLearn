@@ -24,8 +24,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private List<Province> provinceList = new ArrayList<>();
-    mAdapter mAdapter = null;
-    ListView listView =null;
+    private mAdapter mAdapter = null;
+    private ListView listView =null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
