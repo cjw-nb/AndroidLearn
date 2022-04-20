@@ -3,7 +3,11 @@ package com.example.weatherforecast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.weatherforecast.db.City;
@@ -36,6 +40,15 @@ public class CountyActivity extends AppCompatActivity {
         provinceId = intent.getIntExtra("provinceId",0);
         cityId = intent.getIntExtra("cityId",0);
         queryCounty(provinceId,cityId);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String weatherId = countyList.get(i).geWeatherId();
+                Intent intent = new Intent(CountyActivity.this,WeatherActivity.class);
+                intent.putExtra("weather_id",weatherId);
+                startActivity(intent);
+            }
+        });
     }
 
     private void queryCounty(int provinceId, int cityId) {

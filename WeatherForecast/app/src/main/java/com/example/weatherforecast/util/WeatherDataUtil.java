@@ -2,9 +2,11 @@ package com.example.weatherforecast.util;
 
 import android.text.TextUtils;
 
+import com.example.weatherforecast.GSON.Weather;
 import com.example.weatherforecast.db.City;
 import com.example.weatherforecast.db.County;
 import com.example.weatherforecast.db.Province;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +22,17 @@ import java.util.Map;
  * @create: 2022-04-19 19:58
  **/
 public class WeatherDataUtil {
+    public static Weather handleWeatherResponse(String response){
+        try {
+            JSONObject weatherJson = new JSONObject(response);
+            JSONArray jsonArray = weatherJson.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static boolean handleProvinceRespoense(String response) {
         if (TextUtils.isEmpty(response) == false) {
             try {

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.WeatherForecast"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".WeatherActivity"
+            android:exported="false" />
+        <activity
             android:name=".CountyActivity"
             android:exported="false" />
         <activity
