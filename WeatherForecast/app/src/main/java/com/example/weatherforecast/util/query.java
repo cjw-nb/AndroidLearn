@@ -1,5 +1,8 @@
 package com.example.weatherforecast.util;
 
+import android.widget.Toast;
+
+import com.example.weatherforecast.MainActivity;
 import com.example.weatherforecast.db.Province;
 
 import org.litepal.LitePal;
@@ -22,37 +25,5 @@ public class query {
     private static Province selectProvince;
     private static Province selectCity;
     private static List<Province> provinceList;
-    public static List<Province> queryProvinces() {
-        provinceList = LitePal.findAll(Province.class);
-        if (provinceList.size() > 0) return provinceList;
-        else {
-            String address = "http://guolin.tech/api/china";
-            if(queryFromServer(address, "province"))
-                provinceList = queryProvinces();
-        }
-        return provinceList;
-    }
 
-    private static boolean queryFromServer(String address, final String type) {
-        final boolean[] result = {false};
-        HttpUtil.sendOkHttpRequest(address, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String responseText = response.body().string();
-                if ("province".equals(type))
-                    result[0] = WeatherDataUtil.handleProvinceRespoense(responseText);
-                else if ("city".equals(type))
-                    result[0] = WeatherDataUtil.handleCityRespoense(responseText,selectProvince.getId());
-                else result[0] = WeatherDataUtil.handleCountyRespoense(responseText,selectCity.getId());
-
-            }
-
-        });
-        return result[0];
-    }
 }

@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/androidproject/WeatherForecast/app/src/main/res/layout/activity_city.xml" value="0.1875" />
+        <entry key="..\:/androidproject/WeatherForecast/app/src/main/res/layout/activity_county.xml" value="0.1875" />
         <entry key="..\:/androidproject/WeatherForecast/app/src/main/res/layout/activity_main.xml" value="0.2916666666666667" />
+        <entry key="..\:/androidproject/WeatherForecast/app/src/main/res/layout/cjty_layout.xml" value="0.21822916666666667" />
+        <entry key="..\:/androidproject/WeatherForecast/app/src/main/res/layout/county_layout.xml" value="0.21822916666666667" />
         <entry key="..\:/androidproject/WeatherForecast/app/src/main/res/layout/province_layout.xml" value="0.2916666666666667" />
       </map>
     </option>

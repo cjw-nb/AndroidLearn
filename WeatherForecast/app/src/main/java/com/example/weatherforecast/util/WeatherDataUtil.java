@@ -21,7 +21,7 @@ import java.util.Map;
  **/
 public class WeatherDataUtil {
     public static boolean handleProvinceRespoense(String response) {
-        if (TextUtils.isEmpty(response) != false) {
+        if (TextUtils.isEmpty(response) == false) {
             try {
                 JSONArray provinces = new JSONArray(response);
                 for (int i = 0; i < provinces.length(); i++) {
@@ -39,7 +39,7 @@ public class WeatherDataUtil {
         return false;
     }
     public static boolean handleCityRespoense(String response,int provinceId){
-        if (TextUtils.isEmpty(response) != false) {
+        if (TextUtils.isEmpty(response) == false) {
             try {
                 JSONArray citys = new JSONArray(response);
                 for (int i = 0; i < citys.length(); i++) {
@@ -58,7 +58,7 @@ public class WeatherDataUtil {
         return false;
     }
     public static boolean handleCountyRespoense(String response,int cityId){
-        if (TextUtils.isEmpty(response) != false) {
+        if (TextUtils.isEmpty(response) == false) {
             try {
                 JSONArray countys = new JSONArray(response);
                 for (int i = 0; i < countys.length(); i++) {
