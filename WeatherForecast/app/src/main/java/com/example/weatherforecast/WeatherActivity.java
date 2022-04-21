@@ -64,8 +64,15 @@ public class WeatherActivity extends AppCompatActivity {
         picImg = (ImageView) findViewById(R.id.pic_img);
         loadPic();
         String weatherId = getIntent().getStringExtra("weather_id");
-        weatherLayout.setVisibility(View.VISIBLE);
-        requestWeather(weatherId);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String weatherString = prefs.getString(weatherId, null);
+        if (weatherString != null) {
+            Weather weather = WeatherDataUtil.handleWeatherResponse(weatherString);
+            showWeatherInfo(weather);
+        } else {
+            weatherLayout.setVisibility(View.VISIBLE);
+            requestWeather(weatherId);
+        }
 
     }
 
@@ -147,6 +154,9 @@ public class WeatherActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (weather != null && "ok".equals(weather.status)) {
+                            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
+                            editor.putString(weatherId,responseText);
+                            editor.apply();
                             showWeatherInfo(weather);
                         } else {
                             Toast.makeText(WeatherActivity.this, "获取失败", Toast.LENGTH_SHORT).show();
